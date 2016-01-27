@@ -1,0 +1,149 @@
+<html>
+<head>
+    <link rel="stylesheet" href="../reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="../reveal.js/css/theme/night.css">
+    <link rel="stylesheet" href="../reveal.js/lib/css/zenburn.css">
+    <style>
+        .reveal pre code {
+            font-size: 22px;
+        }
+    </style>
+</head>
+<body>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <h1>OOP</h1>
+            <h2>Prvá časť</h2>
+        </section>
+        <!-- Definicie -->
+        <section>
+            <section>
+                <h2>Objekt</h2>
+                <p>Objekt je entita, ktorá ma stav, správanie a indentitu.</p>
+                <pre><code>$lada = new Car();</code></pre>
+            </section>
+            <section>
+                <h2>Trieda</h2>
+                <p>Implementácia objektu, tvorí typ objektu.</p>
+                <pre><code>class Car extends Thing implements Drive{}</code></pre>
+            </section>
+            <section>
+                <h2>Trieda (ďaľšie štúdium)</h2>
+                <p>Vonkajsie "API" triedy a *conditions tvoria contract.</p>
+                <ul>
+                    <li>preconditions</li>
+                    <li>postconditions</li>
+                    <li>invariants</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Interface</h2>
+                <p>Spolu s triedou určuje typ objektu. Zaručuje isté správanie objektu.</p>
+                <blockquote>Nepochopený génius!</blockquote>
+                <pre><code>interface Drive {}</code></pre>
+            </section>
+        </section>
+        <section>
+            <h2>Abstrakcia</h2>
+            <p>Pri návrhu systému používame abstrakciu reálnych objektov.</p>
+            <p>Keď si napíšeme usecases, podst. mená sú dobrými kandidátmi na triedy.</p>
+        </section>
+        <section>
+            <h2>Polymorfizmus</h2>
+            <p>
+                Polymorfizmus je mechanizmus, ktorý umožňuje objektom nadobúdať rôzne typy alebo typu rôzne reagovať na volanie metódy.
+            </p>
+            <pre><code>$programmer = new Programmer();</code></pre>
+            <pre><code>$human = new Programmer();</code></pre>
+            <pre><code>$programmer->dance();</code></pre>
+            <pre><code>$human->dance();</code></pre>
+        </section>
+        <section data-background-image="https://media.giphy.com/media/TXrm00Yl03f68/giphy.gif">
+            <!--<h2>GIF time!</h2>-->
+        </section>
+        <section>
+            <h2>Zapúzdrenie</h2>
+            <p>Nezverejňujeme:</p>
+            <ul>
+                <li>vnútornú štruktúru triedy</li>
+                <li>detaily o internom stave triedy</li>
+                <li>implementačné detaily triedy</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Zapúzdrenie</h2>
+            <pre><code>class Kuzelnik {
+
+    private $prijemnaAsistentka;
+
+    private odvedPozornost();
+
+    public function urobTrik();
+
+}</code></pre>
+        </section>
+        <section>
+            <h2>Dedenie</h2>
+            <p>
+                Dedenie je špecializácia z jednoduchšej, všeobecnejšej triedy.
+            </p>
+            <blockquote>"is a ..."</blockquote>
+            <pre><code>class Programmer extends Human {}</code></pre>
+        </section>
+        <section>
+            <h2>Dedenie</h2>
+            <blockquote>Ak slovenská veta „každý X je aj Y“ neznie prirodzene, nie je to dedičnosť!</blockquote>
+            <p>Každý programátor je človek.</p>
+        </section>
+        <section>
+            <h2>Dedenie</h2>
+            <ul>
+                <li>dedit v rámci domény</li>
+                <li>podtyp poskytuje to isté čo nadtyp a niečo naviac</li>
+            </ul>
+             <pre><code>class Spider extends Pig {
+    public function walk() {}
+ }</code></pre>
+        </section>
+        <section data-background-image="https://media.giphy.com/media/c2rJA8UVBVodi/giphy.gif">
+            <!--<h2>Pig time!</h2>-->
+        </section>
+        <section>
+            <h2>Kompozícia</h2>
+            <p>Vzťah medzi triedami. Môže nahradiť dedičnosť.</p>
+            <p>Keď potrebujeme použiť iba časť z API nejakej triedy.</p>
+            <blockquote>"has a ..."</blockquote>
+            <pre><code>class Programmer extends Human {
+    private $notebook;
+}</code></pre>
+        </section>
+        <section data-background-image="https://media.giphy.com/media/LPn77YyDIqfhm/giphy.gif">
+            <!--<h2>Code time!</h2>-->
+        </section>
+    </div>
+</div>
+<script src="../reveal.js/js/reveal.js"></script>
+<script src="../reveal.js/lib/js/head.min.js"></script>
+<script>
+//    window.addEventListener("mousedown", handleClick, false);
+//    window.addEventListener("contextmenu", function(e) { e.preventDefault(); }, false);
+//
+//    function handleClick(e) {
+//        e.preventDefault();
+//        if(e.button === 0) Reveal.next();
+//        if(e.button === 2) Reveal.prev();
+//    }
+</script>
+<script>
+    Reveal.initialize({
+        dependencies: [
+            // Syntax highlight for <code> elements
+            { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); }},
+            // Zoom in and out with Alt+click
+            { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true }
+        ]
+    });
+</script>
+</body>
+</html>
