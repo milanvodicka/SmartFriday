@@ -16,7 +16,16 @@
             <h1>OOP</h1>
             <h2>Prvá časť</h2>
         </section>
-        <!-- Definicie -->
+        <section>
+            <ol>
+                <li>OOP</li>
+                <li>SOLID</li>
+                <li>OOD</li>
+                <li>Unit testing</li>
+                <li>TDD</li>
+                <li>Specials</li>
+            </ol>
+        </section>
         <section>
             <section>
                 <h2>Objekt</h2>
@@ -48,32 +57,38 @@
             <h2>Abstrakcia</h2>
             <p>Pri návrhu systému používame abstrakciu reálnych objektov.</p>
             <p>Keď si napíšeme usecases, podst. mená sú dobrými kandidátmi na triedy.</p>
+            <blockquote>
+                Každá <strong>ponuka</strong> má niekoľko <strong>položiek</strong>. Položka sa dá vložiť do <strong>košika</strong>.
+            </blockquote>
         </section>
         <section>
-            <h2>Polymorfizmus</h2>
-            <p>
-                Polymorfizmus je mechanizmus, ktorý umožňuje objektom nadobúdať rôzne typy alebo typu rôzne reagovať na volanie metódy.
-            </p>
-            <pre><code>$programmer = new Programmer();</code></pre>
-            <pre><code>$human = new Programmer();</code></pre>
-            <pre><code>$programmer->dance();</code></pre>
-            <pre><code>$human->dance();</code></pre>
-        </section>
-        <section data-background-image="https://media.giphy.com/media/TXrm00Yl03f68/giphy.gif">
-            <!--<h2>GIF time!</h2>-->
-        </section>
-        <section>
-            <h2>Zapúzdrenie</h2>
-            <p>Nezverejňujeme:</p>
-            <ul>
-                <li>vnútornú štruktúru triedy</li>
-                <li>detaily o internom stave triedy</li>
-                <li>implementačné detaily triedy</li>
-            </ul>
+            <section>
+                <h2>Polymorfizmus</h2>
+                <p>
+                    Polymorfizmus je mechanizmus, ktorý umožňuje objektom nadobúdať rôzne typy alebo typu rôzne reagovať na volanie metódy.
+                </p>
+                <pre><code>$programmer = new Programmer();</code></pre>
+                <pre><code>$human = new Programmer();</code></pre>
+                <pre><code>$programmer->dance();</code></pre>
+                <pre><code>$human->dance();</code></pre>
+            </section>
+            <section data-background-image="https://media.giphy.com/media/TXrm00Yl03f68/giphy.gif">
+                <!--<h2>GIF time!</h2>-->
+            </section>
         </section>
         <section>
-            <h2>Zapúzdrenie</h2>
-            <pre><code>class Kuzelnik {
+            <section>
+                <h2>Zapúzdrenie</h2>
+                <p>Nezverejňujeme:</p>
+                <ul>
+                    <li>vnútornú štruktúru triedy</li>
+                    <li>detaily o internom stave triedy</li>
+                    <li>implementačné detaily triedy</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Zapúzdrenie</h2>
+                <pre><code>class Kuzelnik {
 
     private $prijemnaAsistentka;
 
@@ -81,33 +96,49 @@
 
     public function urobTrik();
 
-}</code></pre>
+}
+
+(new Kuzelnik())->urobTrik();
+</code></pre>
+            </section>
         </section>
         <section>
-            <h2>Dedenie</h2>
-            <p>
-                Dedenie je špecializácia z jednoduchšej, všeobecnejšej triedy.
-            </p>
-            <blockquote>"is a ..."</blockquote>
-            <pre><code>class Programmer extends Human {}</code></pre>
-        </section>
-        <section>
-            <h2>Dedenie</h2>
-            <blockquote>Ak slovenská veta „každý X je aj Y“ neznie prirodzene, nie je to dedičnosť!</blockquote>
-            <p>Každý programátor je človek.</p>
-        </section>
-        <section>
-            <h2>Dedenie</h2>
+            <h2>Viditeľnosť</h2>
             <ul>
-                <li>dedit v rámci domény</li>
-                <li>podtyp poskytuje to isté čo nadtyp a niečo naviac</li>
+                <li>public</li>
+                <li>protected</li>
+                <li>private</li>
             </ul>
-             <pre><code>class Spider extends Pig {
+            <p>V ideálnom svete by bolo <strong>public</strong> niekoľko metód a zvyšok by bol private.</p>
+            <p>Nie sme v ideálnom svete a preto existuje <strong>protected</strong></p>
+        </section>
+        <section>
+            <section>
+                <h2>Dedenie</h2>
+                <p>
+                    Dedenie je špecializácia z jednoduchšej, všeobecnejšej triedy.
+                </p>
+                <blockquote>"is a ..."</blockquote>
+                <pre><code>class Programmer extends Human {}</code></pre>
+            </section>
+            <section>
+                <h2>Dedenie</h2>
+                <blockquote>Ak slovenská veta „každý X je aj Y“ neznie prirodzene, nie je to dedičnosť!</blockquote>
+                <p>Každý programátor je človek.</p>
+            </section>
+            <section>
+                <h2>Dedenie</h2>
+                <ul>
+                    <li>dediť v rámci domény</li>
+                    <li>podtyp poskytuje to isté čo nadtyp a niečo naviac</li>
+                </ul>
+                 <pre><code>class Spider extends Pig {
     public function walk() {}
  }</code></pre>
-        </section>
-        <section data-background-image="https://media.giphy.com/media/c2rJA8UVBVodi/giphy.gif">
-            <!--<h2>Pig time!</h2>-->
+            </section>
+            <section data-background-image="https://media.giphy.com/media/c2rJA8UVBVodi/giphy.gif">
+                <!--<h2>Pig time!</h2>-->
+            </section>
         </section>
         <section>
             <h2>Kompozícia</h2>
@@ -120,6 +151,23 @@
         </section>
         <section data-background-image="https://media.giphy.com/media/LPn77YyDIqfhm/giphy.gif">
             <!--<h2>Code time!</h2>-->
+        </section>
+        <section>
+            <h2>Úlohy</h2>
+            <ol>
+                <li>
+                    Navrhnite štruktúru systému xml feedov. Data dostanete od
+                    <pre><code>interface IFeedResource { getFeedData(); }</code></pre>
+                </li>
+                <li>Navrhnite štruktúru cache knižnice.</li>
+                <li>Navrhnite štruktúru fazetového vyhľadávania (filter).</li>
+            </ol>
+            <p>
+                Všetky návrhy musia byť ľahko rozšíriteľné (nový feed, cache driver, nový filter).
+                Použite triedy, abstraktné triedy, interfaces. Metódy neimplementujte.
+                Môžete použiť private a protected atribúty a metódy na naznačenie spôsobu implementácie.
+            </p>
+            <h3>Vidíme sa o 1 hodinu :).</h3>
         </section>
     </div>
 </div>
@@ -137,6 +185,7 @@
 </script>
 <script>
     Reveal.initialize({
+        slideNumber: true,
         dependencies: [
             // Syntax highlight for <code> elements
             { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); }},
