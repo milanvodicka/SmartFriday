@@ -1,0 +1,220 @@
+<html>
+<head>
+    <link rel="stylesheet" href="../reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="../reveal.js/css/theme/night.css">
+    <link rel="stylesheet" href="../reveal.js/lib/css/zenburn.css">
+    <style>
+        .reveal pre code {
+            font-size: 22px;
+        }
+        .reveal table th,
+        .reveal table td {
+            border: none;
+        }
+        .reveal table {
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <h1>OOP</h1>
+            <h2>Opakovanie</h2>
+            <img src="https://media.giphy.com/media/qKltgF7Aw515K/giphy.gif"/>
+        </section>
+        <section>
+            <h2>A PIE</h2>
+            <table>
+                <tr><th>A</th><td><span class="fragment">Abstraction</span></td></tr>
+                <tr><th>P</th><td><span class="fragment">Polymorphism</span></td></tr>
+                <tr><th>I</th><td><span class="fragment">Inheritance</span></td></tr>
+                <tr><th>E</th><td><span class="fragment">Encapsulation</span></td></tr>
+            </table>
+        </section>
+        <section>
+            <h2>High cohesion, low coupling</h2>
+            <img class="fragment" style="background: #fff;" src="http://sce2.umkc.edu/BIT/burrise/pl/design/cohesion-coupling-abstract.gif"/>
+        </section>
+        <section>
+            <h2>Composition</h2>
+            <img class="fragment" style="max-width: 80%" src="http://cdn.meme.am/instances/56332186.jpg"/>
+        </section>
+        <section>
+            <h1>OOP</h1>
+            <h2>Druhá časť</h2>
+        </section>
+        <section>
+            <section>
+                <h2>Late static binding</h2>
+                <h3>self</h3>
+                <ul>
+                    <li>predstavuje triedu, v ktorej používaný</li>
+                    <li>môže sa použiť ako defaultný argument funkcie</li>
+                </ul>
+                <pre><code>public function formatDate($date, $format = self::DATE_TIME){}</code></pre>
+            </section>
+            <section>
+                <h2>Late static binding</h2>
+                <h3>static</h3>
+                <ul>
+                    <li>predstavuje triedu, v ktorej volaný</li>
+                    <li>umožňuje statickú dedičnosť</li>
+                    <li>umožňuje dediť singleton, základný kameň ZD</li>
+                </ul>
+                <pre><code>new self;</code></pre>
+                <pre><code>new static;</code></pre>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h2>Vytváranie objektov</h2>
+                <pre><code>$customer = new Customer();</code></pre>
+            </section>
+            <section>
+                <h2>Konštruktor</h2>
+                <ul>
+                    <li>inicializácia, závislosti</li>
+                    <li>nevracia hodnotu (môže, ale načotykokos)</li>
+                    <li>môže byť private! (singleton)</li>
+                </ul>
+                <pre><code>parent::__construct();</code></pre>
+            </section>
+            <section>
+                <h2>Deštruktor</h2>
+                <ul>
+                    <li>upratovanie, zapísanie do súboru (CustomLogger)</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Inštanciu môže vrátiť statická metóda</h2>
+                <pre><code>$admin = UserFactory::getAdmin();</code></pre>
+                <pre><code>$miracle = Unicorn::getInstance();</code></pre>
+            </section>
+            <section>
+                <h2>Factory</h2>
+                <img class="fragment" src="http://images.wisegeek.com/factory.jpg"/>
+            </section>
+            <section>
+                <h2>Singleton</h2>
+                <img class="fragment" src="https://img.thewhiskyexchange.com/540/dufob.12yov1.jpg"/>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h2>Liskov Substitution Principle</h2>
+                <blockquote>Inštanciu triedy môžem nahradiť inštanciou jej podtriedy a nič sa neopokazí!</blockquote>
+            </section>
+            <section>
+                <h2>Liskov Substitution Principle</h2>
+                <pre><code>
+$letka->pridaj(new Vtak());
+$letka->pridaj(new Sliepka());
+</code></pre>
+                <pre><code>
+function updateDeals($cache) {
+    // do stuff
+    $cache->deleteAll();
+}
+updateDeals(new ApcCache());
+updateDeals(new CouchbaseCache());
+</code></pre>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h2>Law of Demeter</h2>
+                <blockquote>Ask, don't tell!</blockquote>
+                <blockquote>Objekt môže komunikovať iba so svojimi najbližčími susedmi!</blockquote>
+            </section>
+            <section>
+                <h2>Law of Demeter</h2>
+                <pre><code>
+class Predavacka {
+    public function zaplatit($zakaznik, $suma) {
+        $zakaznik->dajPenazenku()->dajPeniaze($suma);
+    }
+}
+$zakaznik = new Zakaznik(new Penazenka());
+$predavacka->zaplatit($zakaznik, 10);
+</code></pre>
+            </section>
+            <section>
+                <h2>Law of Demeter</h2>
+                <pre><code>
+class Predavacka {
+    public function zaplatit($zakaznik, $suma) {
+        $zakaznik->dajPeniaze($suma);
+    }
+}
+$zakaznik = new Zakaznik(new Penazenka());
+$predavacka->zaplatit($zakaznik, 10);
+</code></pre>
+            </section>
+            <section>
+                <h2>Law of Demeter</h2>
+                <pre><code>
+class Policajt {
+    public function skontrolvat($vodic) {
+        $vodicak = $vodic->dajVodicak();
+        // do stuff ...
+    }
+}
+$vodic = new Vodic(new Vodicak());
+$policajt->skontrolvat($zakaznik);
+</code></pre>
+            </section>
+            <section>
+                <h2>Law of Demeter</h2>
+                <pre><code>
+$total = 0;
+foreach ($cart->getItems() as $item) {
+    $total += $item->getPrice();
+}
+</code></pre>
+                <pre><code>
+foreach ($cart->getItems() as $item) {
+    echo $item->getName . ': ' . $item->getPrice();
+}
+</code></pre>
+            </section>
+        </section>
+        <section data-background-image="https://media.giphy.com/media/LPn77YyDIqfhm/giphy.gif">
+            <!--<h2>Code time!</h2>-->
+        </section>
+        <section>
+            <h2>Úlohy</h2>
+            <ol>
+                <li>Skonzultovať návrhy tímov.</li>
+                <li>Upraviť návrhy podľa dohody. (20 min)</li>
+                <li>Analýza kreditového systému a identifikácia tried.</li>
+            </ol>
+        </section>
+    </div>
+</div>
+<script src="../reveal.js/js/reveal.js"></script>
+<script src="../reveal.js/lib/js/head.min.js"></script>
+<script>
+//    window.addEventListener("mousedown", handleClick, false);
+//    window.addEventListener("contextmenu", function(e) { e.preventDefault(); }, false);
+//
+//    function handleClick(e) {
+//        e.preventDefault();
+//        if(e.button === 0) Reveal.next();
+//        if(e.button === 2) Reveal.prev();
+//    }
+</script>
+<script>
+    Reveal.initialize({
+        slideNumber: true,
+        dependencies: [
+            // Syntax highlight for <code> elements
+            { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); }},
+            // Zoom in and out with Alt+click
+            { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true }
+        ]
+    });
+</script>
+</body>
+</html>
