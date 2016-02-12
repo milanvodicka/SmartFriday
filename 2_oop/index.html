@@ -53,7 +53,12 @@
                     <li>predstavuje triedu, v ktorej používaný</li>
                     <li>môže sa použiť ako defaultný argument funkcie</li>
                 </ul>
-                <pre><code>public function formatDate($date, $format = self::DATE_TIME){}</code></pre>
+                <pre><code>
+public function formatDate($date, $format = self::DATE_TIME) {
+    // do stuff
+    return self::format($date, $format);
+}
+</code></pre>
             </section>
             <section>
                 <h2>Late static binding</h2>
@@ -125,7 +130,7 @@ updateDeals(new CouchbaseCache());
         <section>
             <section>
                 <h2>Law of Demeter</h2>
-                <blockquote>Ask, don't tell!</blockquote>
+                <blockquote>Tell, don't ask!</blockquote>
                 <blockquote>Objekt môže komunikovať iba so svojimi najbližčími susedmi!</blockquote>
             </section>
             <section>
