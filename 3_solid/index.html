@@ -1,0 +1,181 @@
+<html>
+<head>
+    <link rel="stylesheet" href="../reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="../reveal.js/css/theme/night.css">
+    <link rel="stylesheet" href="../reveal.js/lib/css/zenburn.css">
+    <style>
+        .reveal pre code {
+            font-size: 22px;
+        }
+        .reveal table th,
+        .reveal table td {
+            border: none;
+        }
+        .reveal table {
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <h1>SOLID</h1>
+            <h2>Copy-paste edition</h2>
+        </section>
+        <section>
+            <h2>Robert C. Martin</h2>
+            <h3>Uncle Bob</h3>
+            <p><img src="http://www.waterfall2006.com/images/martin.jpg" alt="Uncle Bob"/></p>
+        </section>
+        <section>
+            <h2>SOLID</h2>
+            <table>
+                <tr><th>S</th><td><span class="fragment">Single responsibility principle</span></td></tr>
+                <tr><th>O</th><td><span class="fragment">Open-closed principle</span></td></tr>
+                <tr><th>L</th><td><span class="fragment">Liskov substitution principle</span></td></tr>
+                <tr><th>I</th><td><span class="fragment">Interface segregation</span></td></tr>
+                <tr><th>D</th><td><span class="fragment">Dependency inversion</span></td></tr>
+            </table>
+            <blockquote class="fragment">When applied together, intend to make it more likely that a system is easy to maintain and extend over time.</blockquote>
+        </section>
+        <section data-background-image="http://persephonemagazine.com/wp-content/uploads/2014/04/horror.gif"></section>
+        <section>
+            <h2>Whys</h2>
+            <ul>
+                <li>Bad code slows us down.</li>
+                <li class="fragment">How does it slows you down?</li>
+                <li class="fragment">You dont go fast by rushing!</li>
+                <li class="fragment">You want to go fast, you go well, take your time, study the problem!</li>
+                <!-- doktor pri operacii ma deadline :) doslovne ... ako by si chcel aby sa spraval -->
+                <!-- must see https://www.youtube.com/watch?v=TMuno5RZNeE -->
+                <!-- priklad s el. oknom a startovanim, mechanik je idiot -->
+            </ul>
+        </section>
+        <section>
+            <section>
+                <h2>Single responsibility principle</h2>
+                <blockquote>A class should have only one reason to change.</blockquote>
+                <p>... not what it does, but why it will change (person?).</p>
+            </section>
+            <section>
+                <h2>Single responsibility principle</h2>
+                <p>Why?</p>
+                <p class="fragment"><img style="width:50%" src="http://49.media.tumblr.com/4ffbadbad677ebd6c4b83d106d50e687/tumblr_mtvl8elziG1swuoi6o1_500.gif"/></p>
+                <!-- protecting code -->
+            </section>
+            <section>
+                <h2>Single responsibility principle</h2>
+                <p>In the context of high cohesion and low coupling.</p>
+                <p>In the context of OOP ... Encapsulation</p>
+            </section>
+            <section>
+                <h2>Single responsibility principle</h2>
+                <p>Examples ...</p>
+            </section>
+        </section>
+        <section data-background-image="http://persephonemagazine.com/wp-content/uploads/2014/04/cute_baby_sloth_yawns.gif"></section>
+        <section>
+            <section>
+                <h2>Open-closed principle</h2>
+                <blockquote>A class should be open for extension, but closed for modification.</blockquote>
+            </section>
+            <section>
+                <h2>Open-closed principle</h2>
+                <p>Why?</p>
+                <p class="fragment"><img style="width:50%" src="https://media.giphy.com/media/B2b58gI26GQTe/giphy.gif"/></p>
+                <!-- decoupling, you must make change -->
+            </section>
+            <section>
+                <h2>Open-closed principle</h2>
+                <p>In the context of high cohesion and low coupling.</p>
+                <p>In the context of OOP ... Polymorphism</p>
+            </section>
+            <section>
+                <h2>Open-closed principle</h2>
+                <p>Examples ...</p>
+                <!-- kosik je jasny kandidat -->
+            </section>
+        </section>
+        <section>
+            <h2>Opakovanie</h2>
+        </section>
+        <section>
+            <section>
+                <h2>Liskov Substitution Principle</h2>
+                <blockquote>Inštanciu triedy môžem nahradiť inštanciou jej podtriedy a nič sa neopokazí!</blockquote>
+            </section>
+            <section>
+                <h2>Liskov Substitution Principle</h2>
+                <pre><code>
+$letka->pridaj(new Vtak());
+$letka->pridaj(new Sliepka());
+</code></pre>
+                <pre><code>
+function updateDeals($cache) {
+    // do stuff
+    $cache->deleteAll();
+}
+updateDeals(new ApcCache());
+updateDeals(new CouchbaseCache());
+</code></pre>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h2>Law of Demeter</h2>
+                <blockquote>Tell, don't ask!</blockquote>
+                <blockquote>Objekt môže komunikovať iba so svojimi najbližšími susedmi!</blockquote>
+            </section>
+            <section>
+                <h2>Law of Demeter</h2>
+                <pre><code>
+class Predavacka {
+    public function zaplatit($zakaznik, $suma) {
+        $zakaznik->dajPenazenku()->dajPeniaze($suma);
+    }
+}
+$zakaznik = new Zakaznik(new Penazenka());
+$predavacka->zaplatit($zakaznik, 10);
+</code></pre>
+            </section>
+        </section>
+        <section data-background-image="https://media.giphy.com/media/LPn77YyDIqfhm/giphy.gif">
+            <!--<h2>Code time!</h2>-->
+        </section>
+        <section>
+            <h2>Úlohy</h2>
+            <ol>
+                <li>Nájsť v kóde porušenie SRP.</li>
+                <li>Nájsť v kóde porušenie OCP.</li>
+                <li>Ukážeme si Dependency Injection Conatiner</li>
+                <li>Košík ... yay!</li>
+            </ol>
+        </section>
+    </div>
+</div>
+<script src="../reveal.js/js/reveal.js"></script>
+<script src="../reveal.js/lib/js/head.min.js"></script>
+<script>
+//    window.addEventListener("mousedown", handleClick, false);
+//    window.addEventListener("contextmenu", function(e) { e.preventDefault(); }, false);
+//
+//    function handleClick(e) {
+//        e.preventDefault();
+//        if(e.button === 0) Reveal.next();
+//        if(e.button === 2) Reveal.prev();
+//    }
+</script>
+<script>
+    Reveal.initialize({
+        slideNumber: true,
+        dependencies: [
+            // Syntax highlight for <code> elements
+            { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); }},
+            // Zoom in and out with Alt+click
+            { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true }
+        ]
+    });
+</script>
+</body>
+</html>
