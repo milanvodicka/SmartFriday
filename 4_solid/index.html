@@ -1,0 +1,139 @@
+<html>
+<head>
+    <link rel="stylesheet" href="../reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="../reveal.js/css/theme/night.css">
+    <link rel="stylesheet" href="../reveal.js/lib/css/zenburn.css">
+    <style>
+        .reveal pre code {
+            font-size: 22px;
+        }
+        .reveal table th,
+        .reveal table td {
+            border: none;
+        }
+        .reveal table {
+            color: #fff;
+        }
+    </style>
+    <meta charset="utf-8"/>
+</head>
+<body>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <h1>SOLID</h1>
+            <h2>After-a-long-time edition</h2>
+        </section>
+        <section>
+            <h2>SOLID</h2>
+            <table>
+                <tr><th>S</th><td><span class="fragment">Single responsibility principle</span></td></tr>
+                <tr><th>O</th><td><span class="fragment">Open-closed principle</span></td></tr>
+                <tr><th>L</th><td><span class="fragment">Liskov substitution principle</span></td></tr>
+                <tr><th>I</th><td><span class="fragment">Interface segregation</span></td></tr>
+                <tr><th>D</th><td><span class="fragment">Dependency inversion</span></td></tr>
+            </table>
+            <blockquote class="fragment">When applied together, intend to make it more likely that a system is easy to maintain and extend over time.</blockquote>
+        </section>
+        <section data-background-image="http://replygif.net/i/377.gif"></section>
+        <section>
+            <h2>Single responsibility principle</h2>
+            <blockquote>A class should have only one reason to change.</blockquote>
+            <p>... not what it does, but why it will change (person?).</p>
+        </section>
+        <section>
+            <h2>Open-closed principle</h2>
+            <blockquote>A class should be open for extension, but closed for modification.</blockquote>
+        </section>
+        <section>
+            <h2>Liskov Substitution Principle</h2>
+            <blockquote>Inštanciu triedy môžem nahradiť inštanciou jej podtriedy a nič sa neopokazí!</blockquote>
+        </section>
+        <section>
+            <h1>Novinky</h1>
+        </section>
+        <section>
+            <h2>Interface segregation principle</h2>
+            <blockquote>The interface-segregation principle (ISP) states that no client should be forced to depend on methods it does not use.</blockquote>
+        </section>
+        <section>
+            <h2>Interface segregation principle</h2>
+            <pre><code>
+interface Stream {
+    public function reset();
+    public function read();
+    public function write();
+}
+            </code></pre>
+        </section>
+        <section>
+            <h2>Interface segregation principle</h2>
+            <pre><code>
+interface ReadableStream {
+    public function reset();
+    public function read();
+}
+
+
+interface WritableStream {
+    public function write();
+}
+
+
+class FileStream implements ReadableStream, WritableStream {}
+            </code></pre>
+        </section>
+        <section>
+            <h2>Dependency inversion principle</h2>
+            <blockquote>
+                A. High-level modules should not depend on low-level modules. Both should depend on abstractions.
+                B. Abstractions should not depend on details. Details should depend on abstractions.
+            </blockquote>
+        </section>
+        <section>
+            <h2>Dependency inversion principle</h2>
+            <h3>Inversion of Controler</h3>
+            <blockquote>With inversion of control, it is the framework that calls into the custom, or task-specific, code.</blockquote>
+        </section>
+        <section>
+            <h2>Dependency inversion principle</h2>
+            <h3>Dependency injection</h3>
+            <blockquote>Dependency injection is a software design pattern that implements inversion of control for resolving dependencies.</blockquote>
+        </section>
+        <section data-background-image="http://tclhost.com/clya4nh.gif">
+            <!--<h2>Code time!</h2>-->
+        </section>
+        <section>
+            <h2>Úlohy</h2>
+            <ol>
+                <li>Nie sú ... rýchlo späť refaktorovať!</li>
+            </ol>
+        </section>
+        <section data-background-image="http://media4.popsugar-assets.com/files/2015/06/24/867/n/1922398/dd05b93fbb3755a0_2wRCQv71G3Wt4.xxxlarge/i/Warning-treadmills-faster-than-appear.gif">
+    </div>
+</div>
+<script src="../reveal.js/js/reveal.js"></script>
+<script src="../reveal.js/lib/js/head.min.js"></script>
+<script>
+//    window.addEventListener("mousedown", handleClick, false);
+//    window.addEventListener("contextmenu", function(e) { e.preventDefault(); }, false);
+//
+//    function handleClick(e) {
+//        e.preventDefault();
+//        if(e.button === 0) Reveal.next();
+//        if(e.button === 2) Reveal.prev();
+//    }
+</script>
+<script>
+    Reveal.initialize({
+        slideNumber: true,
+        dependencies: [
+            // Syntax highlight for <code> elements
+            { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); }},
+            // Zoom in and out with Alt+click
+            { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true }
+        ]
+    });
+</script>
+</body>
+</html>
